@@ -96,16 +96,14 @@ const Favorite: FunctionComponent<{
 
 	return (
 		<fetcher.Form method="post">
-			<Form method="post">
-				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-				<button
-					aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
-					name="favorite"
-					value={favorite ? "false" : "true"}
-				>
-					{favorite ? "★" : "☆"}
-				</button>
-			</Form>
+			{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+			<button
+				aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+				name="favorite"
+				value={favorite ? "false" : "true"}
+			>
+				{favorite ? "★" : "☆"}
+			</button>
 		</fetcher.Form>
 	);
 };
