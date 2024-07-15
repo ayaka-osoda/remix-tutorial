@@ -2,6 +2,8 @@
 
 - [Remix Docs](https://remix.run/docs)
 
+This repository is where I did the [Remix tutorial](https://remix.run/docs/en/main/start/tutorial).
+
 ## Development
 
 From your terminal:
