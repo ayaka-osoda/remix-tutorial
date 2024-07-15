@@ -13,6 +13,7 @@ import {
 } from "@remix-run/react";
 import appStylesHref from "./app.css?url";
 import { createEmptyContact, getContacts } from "./data";
+import { useEffect, useState } from "react";
 
 export const action = async () => {
 	const contact = await createEmptyContact();
@@ -33,6 +34,18 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function App() {
 	const { contacts, q } = useLoaderData<typeof loader>();
 	const navigation = useNavigation();
+	const [query, setQuery] = useState(q || "");
+
+	useEffect(() => {
+		setQuery(q || "");
+	}, [q]);
+
+	useEffect(() => {
+		const searchField = document.getElementById("q");
+		if (searchField instanceof HTMLInputElement) {
+			searchField.value = q || "";
+		}
+	}, [q]);
 
 	return (
 		<html lang="en">
@@ -51,9 +64,11 @@ export default function App() {
 								id="q"
 								aria-label="Search contacts"
 								defaultValue={q || ""}
+								onChange={(event) => setQuery(event.currentTarget.value)}
 								placeholder="Search"
 								type="search"
 								name="q"
+								value={query}
 							/>
 							<div id="search-spinner" aria-hidden hidden={true} />
 						</Form>
