@@ -78,7 +78,6 @@ export default function App() {
 								id="q"
 								aria-label="Search contacts"
 								className={searching ? "loading" : ""}
-								defaultValue={q || ""}
 								onChange={(event) => setQuery(event.currentTarget.value)}
 								placeholder="Search"
 								type="search"
